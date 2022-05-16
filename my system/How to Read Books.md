@@ -10,3 +10,9 @@ I can write a summary for each book of these books:
 4. Philosophy 101
 5. Ethics 101
 6. On Liberty by John Stuart Mills
+
+**Capture Information (Take Notes)**
+Copy/past and highlight text with formatting (highlights, bold, underline)
+
+**Create Folders for Each Project**
+App Ideas, capturing summaries, video tutorials, etc.
