@@ -1,5 +1,8 @@
 ### Hi there 👋
 
+This is my brain in the cloud.  
+
+I am using markdown to document everything because it's simple and promises to never die. Even though it's simple, here is a one-pager on basic  markdown syntax https://www.markdownguide.org/basic-syntax/#code
 <!--
 **georgemirandajr/georgemirandajr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
