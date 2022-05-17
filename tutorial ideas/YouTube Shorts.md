@@ -25,4 +25,4 @@ Wanting to solidify and share my unique experience working with software develop
 Make your life a little easier with R.  Hacks are temporary, these videos offer solutions that'll stick like glue.
 
 **Ideas for Titles**
-Snippets, components, modules, 
+Something that fits the idea of **snippets** (quick inserts of templates), components, modules, placeholder. I'm thinking of those dishes with the 3 containers.  There's one for the main dish and 2 sides.  That's a template for your dinner.
