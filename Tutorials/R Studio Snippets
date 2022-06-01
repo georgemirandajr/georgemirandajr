@@ -1,0 +1,17 @@
+Fantastic for repetitive or hard-to-remember chunks of code.  R Studio code snippets give you the ability to quickly repurpose your code as templates.
+I use snippets for building get requests, grouping and summarizing data with dplyr, inserting custom functions, and much more.
+
+Go to Tools > Global Options > Code.
+Check the box under the *Snippets* section.  This enables code snippets in R Studio.
+Go to Edit Snippets to create and modify code snippets.
+
+You'll notice that there's already tons of snippets for each type of file.  My most common file types are R files (of course), Markdown, and HTML. 
+
+I'm going to show you how to create a snippet for a custom function called createProject, which takes a directory path and string field to name your new project.
+
+Start by using the snippet keyword followed by the name of your snippet. When you're writing a script and type this name, you'll see this snippet suggested to you. 
+Hit enter and write the code that you want to appear when you select this snippet.  
+snippet createProject
+	createProject(path = choose.dir(), ${1:name})
+  
+  
