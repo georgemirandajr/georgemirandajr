@@ -25,3 +25,4 @@ Make your life a little easier with R.  Hacks are temporary, these videos offer 
 
 **Ideas for Titles**
 Something that fits the idea of **snippets** (quick inserts of templates), components, modules, placeholder. I'm thinking of those dishes with the 3 containers.  There's one for the main dish and 2 sides.  That's a template for your dinner.
+Or something like Data Wranglin', Data Rodeo, or Data Lasso.. I like the cowboy theme.  Wrangler jeans and lasso.  
