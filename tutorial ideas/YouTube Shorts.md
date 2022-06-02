@@ -1,8 +1,8 @@
 Wanting to solidify and share my unique experience working with software development, I want to create concise videos on a single topic.  
 
 **Videos**
-1. R Studio code snippets (data.table example, read_fwf)
-2. Quickly setup custom project folders (data, output, utils, www)
+1. [X] R Studio code snippets (data.table example, read_fwf)
+2. [X] Quickly setup custom project folders (data, output, utils, www)
 3. R Addins as a package + see Snippets
 4. Publish Addins on Github
 5. Setting up API connections in R
