@@ -1,23 +1,24 @@
 Wanting to solidify and share my unique experience working with software development, I want to create concise videos on a single topic.  
 
 **Videos**
-1. [X] R Studio code snippets (data.table example, read_fwf)
-2. [X] Quickly setup custom project folders (data, output, utils, www)
-3. R Addins as a package + see Snippets
-4. Publish Addins on Github
-5. Setting up API connections in R
-6. Publishing a static R app on SharePoint w/ RMD
-7. Using MS Teams folders with R - sync, read, write
-8. Using Airtable in R (airtabler)
-9. Sending gorgeous emails with R
-10. A better shiny template w/ modules and css templates
-11. Sending gorgeous emails with R
-12. Sending text messages with R
-13. Tictoc()
-14. Purrr
-15. Furrr 
-16. Emails with Power Automate
-17. NQL with R (Ask Ada)
+1. [ ] Everything you need to know to start working in R (packages, data structures, loops, functions, executing scripts)
+2. [X] R Studio code snippets (data.table example, read_fwf)
+3. [X] Quickly setup custom project folders (data, output, utils, www)
+4. R Addins as a package + see Snippets
+5. Publish Addins on Github
+6. Setting up API connections in R
+7. Publishing a static R app on SharePoint w/ RMD
+8. Using MS Teams folders with R - sync, read, write
+9. Using Airtable in R (airtabler)
+10. Sending gorgeous emails with R
+11. A better shiny template w/ modules and css templates
+12. Sending gorgeous emails with R
+13. Sending text messages with R
+14. Tictoc()
+15. Purrr
+16. Furrr 
+17. Emails with Power Automate
+18. NQL with R (Ask Ada)
 
 **Description of the Video Series**
 Make your life a little easier with R.  Hacks are temporary, these videos offer solutions that'll stick like glue.
