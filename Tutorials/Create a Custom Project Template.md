@@ -2,7 +2,7 @@
 I am going to write a function that will create a directory with all the sub-directories needed for a data analysis project.  
 
 ## Motivation
-All data analysts work on the same thing: data.  However, the way we organize that work varies based on preferences, work environments, and experience.  When I start a big project, I need to have a predictable framework that makes it quick and easy to get started working.  
+All data analysts work on the same thing: data.  However, the way we organize that work varies based on preferences, work environments, and experience.  When I start a big project, I need to have a predictable framework that makes it quick and easy to start working.  
   
 ## My Custom Project Folder
 My projects need to have the following sub-directories:
