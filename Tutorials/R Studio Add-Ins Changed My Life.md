@@ -4,7 +4,7 @@ Want to take your coding efficiency into hyper-drive?  R Add-Ins will do that!  
 
 ## What is an R Studio Addin?
 
-This seldomly discussed, yet powerful feature of R Studio allows you take advantage of extensions written for R by simply clicking "Addins" and choosing from a list of installed addins.  An addin is distributed through R packages, which means all you have to do is write your code, create a package, publish it, and let others know that they can download it.  
+This seldomly discussed, yet powerful feature of R Studio allows you take advantage of extensions written for R by simply clicking "Addins" and choosing from a list of installed addins.  **Addins are distributed as R packages**, which means all you have to do is write your code, create a package, publish it, and let others know that they can download it.  
 
 ## Examples
 
@@ -19,7 +19,8 @@ insertInAddin <- function() {
   rstudioapi::insertText(" %in% ")
 }
 ```
-The code above inserts the `%in%` operator.  You can map this addin to a keyboard shortcut to make things even more efficient, which is similar to how the pipe `%>%` operator works when you use `Ctrl+Shift+M`.  But if you can make a shiny gadget, then you can do even more fun things. 
+The code above inserts the `%in%` operator.  You can map this addin to a keyboard shortcut to make things even more efficient, which is similar to how the pipe `%>%` operator works when you use `Ctrl+Shift+M`.  But if you can make a shiny gadget, then you can do even more fun things like the `questionr` addin. 
 
 ## Build Your Own
 
+Let's create an addin that will create a template project folder for us containing sub-folders and template files that analysts on our team typically need when conducting analyses.    
