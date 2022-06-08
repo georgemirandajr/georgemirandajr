@@ -84,7 +84,7 @@ createProject <- function(path, projectName, ...) {
 ```
 
 ### 5. Register the addin
-Create a file at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.
+Create a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.
 
 ```
 Name: Create Project
@@ -93,4 +93,11 @@ Binding: createProject
 Interactive: true
 ```
 
-Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function alone and let it be called manually like in the previous [tutorial](www.google.com).
+Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the previous [tutorial](www.google.com). 
+
+### 6. Make the Shiny UI
+Now we get to make the function interact with our user.
+
+### 7. Finish up your R package
+
+### 8. Publish your R package
