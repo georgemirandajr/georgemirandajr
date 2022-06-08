@@ -8,7 +8,7 @@ This seldomly discussed, yet powerful feature of R Studio allows you take advant
 
 ## Examples
 
-There are tons of addin examples
+There are tons of addin examples. Here are a few of my favorites.
 - [esquisse](https://www.dreamrs.fr/) to quickly visualize your data and save the code to reproduce it
 - [questionr](https://juba.github.io/questionr/) to do survey analysis
 - [ViewPipeSteps](https://github.com/daranzolin/ViewPipeSteps) to understand the output of each step in a dplyr workflow (also helps debugging)
@@ -23,7 +23,9 @@ The code above inserts the `%in%` operator.  You can map this addin to a keyboar
 
 ## Build Your Own
 
-Let's build off another example [link here](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials) where we created a function that created a custom project folder for us; however, this time we will turn the function into an addin.  This requires a few extra steps.
+Make sure to have `rstudioapi` installed.  
+
+Let's build off another example [link here](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials) where we created a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the function must be called manually like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu of options.  This requires a few extra steps.
 
 ### 1. Create a package
 Start by creating a new project by clicking on the New Project icon.
@@ -55,12 +57,16 @@ createProject <- function(path, projectName, ...) {
   sapply( subFolderNames, dir.create )
 }
 ```
+Again, this function is great, but we have to remember its name and arguments.  Also, distributing this function is not easy.  Without packaging it, you would have to share the file via shared drives or email.  
 
 ### 3. Add some templates
 
-Now let's add some template files that I like to include in every project: `global.R` and an R markdown report template called `Report_Template.Rmd`.  The `global.R` file calls on packages, establishes variables to connect to my commonly used datasets, and calls on other scripts that will actually perform the analyses. The `Report_Template.Rmd` file is a vetted template for my output.  You can add any files you want to include in your custom project folder, I'm just using these as examples.  To add template files, create a folder in your package path `inst/extdata` and copy your files there.
+Another great feature of addins is that you can add files in your package that can be used by your functions.  This means that you can share data and templates!  
+
+In this example, I'll add some template files that I like to include in every project: `global.R` and an R markdown document called `Report_Template.Rmd`.  The `global.R` file calls on packages, establishes variables to connect to my commonly used datasets, and calls on other scripts that will actually perform the analyses. The `Report_Template.Rmd` file is a vetted template for my output.  You can add any files you want to include in your custom project folder, I'm just using these as examples.  To add template files, create a folder in your package path at `inst/extdata` and copy your files there.
 
 ### 4. Modify the function to copy the templates
+Since we're using an addin and our addin uses these templates, we can modify our original function by adding some code that copies/pastes the templates into the user's new project folder.
 
 ```
 # save to R/createProject.R
@@ -84,7 +90,7 @@ createProject <- function(path, projectName, ...) {
 ```
 
 ### 5. Register the addin
-Create a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.
+You need to register your addin by creating a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.  Do this for each addin that you want to include.
 
 ```
 Name: Create Project
@@ -96,8 +102,10 @@ Interactive: true
 Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the previous [tutorial](www.google.com). 
 
 ### 6. Make the Shiny UI
-Now we get to make the function interact with our user.
+Now we get to make the function interact with our user.  To do this, we'll modify our function again, this time to make a mini shiny application.
 
 ### 7. Finish up your R package
+Document your package and make sure dependencies are included.
 
 ### 8. Publish your R package
+You can publish your package on github or CRAN.  Github is great for smaller projects, especially if the audience is small.  If your addins could serve the greater R community, publish your package on CRAN.  Make sure to follow CRAN's guidelines.  
