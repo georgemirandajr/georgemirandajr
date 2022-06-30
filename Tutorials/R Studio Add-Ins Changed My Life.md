@@ -1,6 +1,6 @@
 ## R Studio Addins Changed My Life
 
-Want to take your coding efficiency into hyper-drive?  R Add-Ins will do that!  The power of addins really hit me when I started writing my own for the team that I work with.  By packaging my code as addins, my team can now take advantage of the tools I've built that make the job more efficient.  
+Want to take your coding efficiency into hyper-drive?  R Add-Ins will do that!  The power of addins really hit me when I started writing them for my own team.  By packaging my code as addins, the team can take advantage of the tools I've built that make the job more efficient.  
 
 ## What is an R Studio Addin?
 
@@ -23,9 +23,9 @@ The code above inserts the `%in%` operator.  You can map this addin to a keyboar
 
 ## Build Your Own
 
-Make sure to have `rstudioapi` installed.  
+Make sure to have `rstudioapi` installed.  This package allows you to create and configure your addin.  
 
-Let's build off another example [link here](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials) where we created a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the function must be called manually like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu of options.  This requires a few extra steps.
+Let's build off another tutorial [link here](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials) where we wrote a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the original function must be called by typing something like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu of options.  Taking it from a simple function to a useful addin takes just a few steps.
 
 ### 1. Create a package
 Start by creating a new project by clicking on the New Project icon.
@@ -38,32 +38,32 @@ Select R Package
 ![project-type-min](https://user-images.githubusercontent.com/6701264/172500419-18954533-1e5e-4351-9e8b-5e3f5550b524.png)
 
 Name Your R Package
-This package can contain many addins and functions, but generally you should keep each package focused on one theme.  
+Your package can contain many addins and functions, even data and Rmarkdown templates, but generally you should keep each package focused on one theme.  
 ![create-project-min](https://user-images.githubusercontent.com/6701264/172500425-f40de58b-97c8-41ae-8534-38a8cc170a79.png)
 
 ### 2. Write your function(s)
-Here is the function that will create a custom project folder.  This was originally created for another [tutorial](www.google.com). 
+Here is the function that will create a custom project folder.  This was originally created for previous [tutorial](www.google.com). 
 
 ```
 # save to R/createProject.R
 createProject <- function(path, projectName, ...) {
 
-  # Create a folder for the project
+  # Create a folder for the project in the given path
   dir.create( paste0( path, "/", projectName) )
 
-  # Create the sub-folders to organize my project files
+  # Create the sub-folders to organize my project files.
   subFolderNames = c('data', 'output', 'code', 'utils', 'www')
   subFolderNames = path.expand( paste0( path, "/", projectName, "/", subFolderNames) )
   sapply( subFolderNames, dir.create )
 }
 ```
-Again, this function is great, but we have to remember its name and arguments.  Also, distributing this function is not easy.  Without packaging it, you would have to share the file via shared drives or email.  
+Again, this function is great, but to use it we must remember the function name and arguments.  It may not sound so hard to remember these things, but over time you are likely to become overwhelmed as you build many useful tools for yourself and colleagues.  Also, distributing this function is not easy.  Without packaging it and publishing it somewhere, like Github, you would have to share the file via shared drives or email.  
 
 ### 3. Add some templates
 
 Another great feature of addins is that you can add files in your package that can be used by your functions.  This means that you can share data and templates!  
 
-In this example, I'll add some template files that I like to include in every project: `global.R` and an R markdown document called `Report_Template.Rmd`.  The `global.R` file calls on packages, establishes variables to connect to my commonly used datasets, and calls on other scripts that will actually perform the analyses. The `Report_Template.Rmd` file is a vetted template for my output.  You can add any files you want to include in your custom project folder, I'm just using these as examples.  To add template files, create a folder in your package path at `inst/extdata` and copy your files there.
+In this example, I'll add some template files that I like to include in every project: `global.R` and an R markdown document called `Report_Template.Rmd`.  The `global.R` file calls on my frequently used R packages, establishes variables to connect to my commonly used datasets, and calls on other scripts that will actually perform the analysis. The `Report_Template.Rmd` file is a vetted template for my output.  You can add any files you want to include in your custom project folder, I'm just using these as examples.  To add template files, create a folder in your package path at `inst/extdata` and copy your files there.
 
 ### 4. Modify the function to copy the templates
 Since we're using an addin and our addin uses these templates, we can modify our original function by adding some code that copies/pastes the templates into the user's new project folder.
@@ -75,7 +75,7 @@ createProject <- function(path, projectName, ...) {
 # ... continued from above ...
 
   # Copy the report template
-  f = system.file("extdata", "Report_Template.Rmd", package = "raddish" )  # replace the package argument with the name of your package
+  f = system.file("extdata", "Report_Template.Rmd", package = "YOUR_PACKAGE_NAME" )  # replace the package argument with the actual name of your package
 
   if ( nchar(f) > 0 ) {
     file.copy( from = f, to = paste0( path, "/", projectName) )
@@ -93,10 +93,10 @@ createProject <- function(path, projectName, ...) {
 You need to register your addin by creating a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.  Do this for each addin that you want to include.
 
 ```
-Name: Create Project
-Description: Creates a custom project folder
-Binding: createProject
-Interactive: true
+Name: Create Project  // the name displayed in the drop-down list of addins
+Description: Creates a custom project folder  // displayed as help text to describe the addin for your user
+Binding: createProject  // the name of the function you are adding in
+Interactive: true  // see below
 ```
 
 Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the previous [tutorial](www.google.com). 
