@@ -1,4 +1,4 @@
-There ought to be a clear distinction between the discourse of politics and political issues.  Politics, as we know it today, is theater.  A discussion about politics involves defending your favorite character as a hero and attacking their adversary as a villain.  It's always black and white; us against them, no matter the topic.  Further dividing the audience is the sense of identity that is established when allowing political figures to serve as a stand-in for themselves.  
+There ought to be a clear distinction between the discourse of politics and political issues.  Politics is, and always has been, theater.  A discussion about politics involves defending your favorite character as a hero and attacking their adversary as a villain.  It's always black and white; us against them, no matter the topic.  Further dividing the audience is the sense of identity that is established when allowing political figures to serve as a stand-in for themselves.  
 
 The goals of this type of conversation is usually to vent anger and make another person feel dumb or at least wrong.  
 
