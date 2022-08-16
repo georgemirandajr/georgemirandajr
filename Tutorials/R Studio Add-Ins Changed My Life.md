@@ -112,13 +112,133 @@ new_analysis <- function() {  // this is the 'big' function that will launch the
   
   ui <- miniUI::miniPage( ) // the ui code
   server <- function(input, output, session) { } // the server code (calls the createProject())
+  
   viewer <- shiny::dialogViewer("New Analysis Project") // choose where the app runs - other options include browserViewer() and paneViewer()
-  shiny::runGadget(ui, server, viewer = viewer)  // run the shiny app
+  shiny::runGadget(ui, server, viewer = viewer)  // run the shiny app on the viewer 
 }
+```
+
+Filling in this skeleton looks like this.  Notice the explicit calls to external packages.
+```
+require(shiny)
+require(miniUI)
+
+new_analysis <- function() {
+  createProject <- function(path, projectName, ...) {
+
+    # Create a folder for the project
+    dir.create( paste0( path, "/", projectName) )
+
+    # Create the sub-folders
+    subFolderNames = c('data', 'output', 'code', 'utils', 'www')
+    subFolderNames = path.expand( paste0( path, "/", projectName, "/", subFolderNames) )
+    sapply( subFolderNames, dir.create )
+
+    # Copy the report template
+    f = system.file("extdata", "Report_Template.Rmd", package = "YourPackageName" )
+
+    if ( nchar(f) > 0 ) {
+      file.copy( from = f, to = paste0( path, "/", projectName) )
+    }
+
+    # Copy the global.R file
+    g = system.file("extdata", "global.R", package = "YourPackageName" )
+
+    if ( nchar(g) > 0 ) {
+      file.copy( from = g, to = paste0( path, "/", projectName, "/code"))
+    }
+
+  }
+
+  ui <- miniUI::miniPage(
+    miniUI::gadgetTitleBar("Create a Custom Project Folder"),
+    miniUI::miniContentPanel(
+      ## Name the new project
+      shiny::textInput("folder_name_input", "New Project Name"),
+
+      # Choose where to create the new project
+      shiny::helpText("Choose a folder create your project in"),
+      shiny::actionButton("choose_dir", "Choose folder"),
+
+      # Change to this directory?
+      shiny::checkboxInput("switch_dir", "Switch to this folder"),
+
+      # Show the selected path to the new project
+      shiny::uiOutput("created_your_folder")
+    )
+  )
+
+  server <- function(input, output, session) {
+
+    # Provide a default directory
+    dir_path = shiny::reactiveValues( path= getwd() )
+
+    # Update the selected path
+    shiny::observeEvent( input$choose_dir, {
+      dir_path$path = choose.dir()
+      dir_path$path = gsub("\\\\", "/", dir_path$path)
+    })
+
+    ## Your reactive logic goes here.
+    shiny::observeEvent( input$folder_name_input, {
+
+      output$created_your_folder <- shiny::renderUI({
+        p(
+          paste0(
+            "Creating ", dir_path[['path']], "/", input$folder_name_input
+          )
+        )
+      })
+
+    } )
+
+    # Listen for the 'done' event. This event will be fired when a user
+    # is finished interacting with your application, and clicks the 'done'
+    # button.
+    shiny::observeEvent(input$done, {
+
+      # Here is where your Shiny application might now go and affect the
+      # objects open in RStudio or trigger side-effects (i.e., create a project folder).
+      createProject( dir_path[['path']], input$folder_name_input )
+
+      if ( input$switch_dir ) {
+        setwd( paste0( dir_path[['path']], "/", input$folder_name_input ) )
+      }
+
+      # At the end, your application should call 'stopApp()' here, to ensure that
+      # the gadget is closed after 'done' is clicked.
+      shiny::stopApp()
+    })
+  }
+
+  # We'll use a dialog viwer
+  viewer <- shiny::dialogViewer("New Analysis Project")
+
+  shiny::runGadget(ui, server, viewer = viewer)
+
+}
+
+# Call the addin
+# new_analysis()  // only run this line when developing. Make sure to comment-out otherwise you'll have trouble building the package.
+
 ```
 
 ### 7. Finish up your R package
 Document your package and make sure dependencies are included in your DESCRIPTION file.  I recommend using `roxygen2` for documentation.
 
+Once everything is documented and **tested**, you can build the package using Clean and Rebuild.
+![buildpkg](https://user-images.githubusercontent.com/6701264/184960639-d2d18493-39d9-4b29-9424-18cf34de8046.png)
+
 ### 8. Publish your R package
 You can publish your package on Github or CRAN.  Github is great for smaller projects, especially if the audience is small.  If your addins could serve the greater R community, publish your package on CRAN.  Make sure to follow CRAN's guidelines.  
+
+Publishing with Github is easy, especially if you have Github Desktop.  Add a local repository (i.e., the folder containing your package).  Commit and then push to Github.  Use Github Desktop to update Github whenever you make changes.  Others can then download the package from Github using something like `devtools::install_github('yourGithubName/projectFolder')`
+
+Publishin on CRAN takes a little longer, but it has its advantages.  
+1. The package goes through a rigorous vetting process (fully document and test your package prior to submitting to CRAN)
+2. It will be widely available to anyone using R.  
+
+For a step-by-step on how to publish to CRAN, visit https://r-pkgs.org/release.html
+
+## Conclusion
+Publishing an addin is easy and can make your code development more efficient.  In turn, addins can make your life easier, as well as that of anyone who needs to use your code.   
