@@ -13,7 +13,7 @@ There are tons of addin examples. Here are a few of my favorites.
 - [questionr](https://juba.github.io/questionr/) to do survey analysis
 - [ViewPipeSteps](https://github.com/daranzolin/ViewPipeSteps) to understand the output of each step in a dplyr workflow (also helps debugging)
 
-You can create an addin as simple or as complex as you want.  It can be something simple like this
+You can create an addin as simple or as complex as you want.  It can be something simple like this example from R Studio's documentation page.
 ```
 insertInAddin <- function() {
   rstudioapi::insertText(" %in% ")
@@ -23,12 +23,12 @@ The code above inserts the `%in%` operator.  You can map this addin to a keyboar
 
 ## Build Your Own
 
-Make sure to have `rstudioapi` installed.  This package allows you to create and configure your addin.  
+To build your own make sure to have `rstudioapi` installed.  This package allows you to create and configure your addin.  
 
-Let's build off another tutorial [link here](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials) where we wrote a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the original function must be called by typing something like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu of options.  Taking it from a simple function to a useful addin takes just a few steps.
+Let's build off a previous tutorial [link here](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials) where we wrote a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the original function must be called by typing something like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu.  Taking it from a useful function to an even more convenient addin takes just a few steps.
 
 ### 1. Create a package
-Start by creating a new project by clicking on the New Project icon.
+Start by creating a new project by clicking on the New Project icon.  Creating a project sounds like a lot, but I promise it's not.  
 ![image](https://user-images.githubusercontent.com/6701264/172499540-5011dcfd-cf32-4124-96af-5395018e2c6b.png)
 
 Choose New Directory 
@@ -57,11 +57,11 @@ createProject <- function(path, projectName, ...) {
   sapply( subFolderNames, dir.create )
 }
 ```
-Again, this function is great, but to use it we must remember the function name and arguments.  It may not sound so hard to remember these things, but over time you are likely to become overwhelmed as you build many useful tools for yourself and colleagues.  Also, distributing this function is not easy.  Without packaging it and publishing it somewhere, like Github, you would have to share the file via shared drives or email.  
+Again, this function is great, but to use it we must remember the function name and arguments.  It may not sound so hard to remember these things, but over time you are likely to become overwhelmed as you build many useful tools for yourself and colleagues.  Also, distributing this function is not easy.  Without packaging it and publishing it somewhere, like Github or CRAN, you would have to share the file via shared drives or email.  
 
 ### 3. Add some templates
 
-Another great feature of addins is that you can add files in your package that can be used by your functions.  This means that you can share data and templates!  
+Another great feature of addins is that you can add files in your package that can be used by your functions.  This means that you can share datasets and templates!  
 
 In this example, I'll add some template files that I like to include in every project: `global.R` and an R markdown document called `Report_Template.Rmd`.  The `global.R` file calls on my frequently used R packages, establishes variables to connect to my commonly used datasets, and calls on other scripts that will actually perform the analysis. The `Report_Template.Rmd` file is a vetted template for my output.  You can add any files you want to include in your custom project folder, I'm just using these as examples.  To add template files, create a folder in your package path at `inst/extdata` and copy your files there.
 
@@ -90,7 +90,7 @@ createProject <- function(path, projectName, ...) {
 ```
 
 ### 5. Register the addin
-You need to register your addin by creating a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.  Do this for each addin that you want to include.
+You need to register your addin by creating a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.  Do this for each addin that you want to include and show to the user.
 
 ```
 Name: Create Project  // the name displayed in the drop-down list of addins
@@ -103,9 +103,22 @@ Setting `Interactive` to `true` means that we want R Studio to make use of `shin
 
 ### 6. Make the Shiny UI
 Now we get to make the function interact with our user.  To do this, we'll modify our function again, this time to make a mini shiny application.
+The basic structure of our ui will take the following shape.
+```
+new_analysis <- function() {  // this is the 'big' function that will launch the mini shiny app 
+  createProject <- function(path, projectName, ...) {
+    ...all the code to create a template project folder...
+  }
+  
+  ui <- miniUI::miniPage( ) // the ui code
+  server <- function(input, output, session) { } // the server code (calls the createProject())
+  viewer <- shiny::dialogViewer("New Analysis Project") // choose where the app runs - other options include browserViewer() and paneViewer()
+  shiny::runGadget(ui, server, viewer = viewer)  // run the shiny app
+}
+```
 
 ### 7. Finish up your R package
-Document your package and make sure dependencies are included.
+Document your package and make sure dependencies are included in your DESCRIPTION file.  I recommend using `roxygen2` for documentation.
 
 ### 8. Publish your R package
-You can publish your package on github or CRAN.  Github is great for smaller projects, especially if the audience is small.  If your addins could serve the greater R community, publish your package on CRAN.  Make sure to follow CRAN's guidelines.  
+You can publish your package on Github or CRAN.  Github is great for smaller projects, especially if the audience is small.  If your addins could serve the greater R community, publish your package on CRAN.  Make sure to follow CRAN's guidelines.  
