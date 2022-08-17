@@ -23,7 +23,7 @@ snippet createProject
 ```  
 
 ### Example: read_fwf
-`readr` is a fantastic package that contains functions to read data from just about any format.  My organnization uses fixed-width-files and `readr` contains a function called `read_fwf` that makes it easy to read this type of file.  Because the fixed widths are custom to each file, I keep a reference table of the field names and field widths in a data.frame and use this along with `read_fwf` to import the data.  Here's an example of a snippet that makes this easy for me to put those pieces together.  I prefer to use data.table, so I can customize this always import as a `data.table` using `setDT`.
+`readr` is a fantastic package that contains functions to read data from just about any format.  My organization uses fixed-width-files and `readr` contains a function called `read_fwf` that makes it easy to read this type of file.  Because the fixed widths are custom to each file, I keep a reference table of the field names and field widths in a data.frame and use this along with `read_fwf` to import the data.  Here's an example of a snippet that makes this easy for me to put those pieces together.  I prefer to use data.table, so I can customize this always import as a `data.table` using `setDT`.
 
 ```
 snippet fwf
