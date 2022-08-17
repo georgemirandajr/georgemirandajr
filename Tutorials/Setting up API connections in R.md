@@ -40,7 +40,7 @@ Some text here
 
 ## Example
 ```
-https://rapidapi.com/wirefreethought/api/geodb-cities/
+url = "https://wft-geo-db.p.rapidapi.com/v1/geo/cities"
 
 response = VERB( "GET", 
                   url, 
