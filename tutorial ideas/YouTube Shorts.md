@@ -4,7 +4,7 @@ Wanting to solidify and share my unique experience working with software develop
 1. [ ] Everything you need to know to start working in R (packages, data structures, loops, functions, executing scripts)
 2. [X] R Studio code snippets (data.table example, read_fwf)
 3. [X] Quickly setup custom project folders (data, output, utils, www)
-4. R Addins as a package + see Snippets
+4. [X] R Addins as a package + see Snippets
 5. Publish Addins on Github
 6. Setting up API connections in R
 7. Publishing a static R app on SharePoint w/ RMD
