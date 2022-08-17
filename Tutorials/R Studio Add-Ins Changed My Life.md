@@ -42,7 +42,7 @@ Your package can contain many addins and functions, even data and Rmarkdown temp
 ![create-project-min](https://user-images.githubusercontent.com/6701264/172500425-f40de58b-97c8-41ae-8534-38a8cc170a79.png)
 
 ### 2. Write your function(s)
-Here is the function that will create a custom project folder.  This was originally created for previous [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md). 
+Here is the function that will create a custom project folder.  This was originally created for [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md). 
 
 ```
 # save to R/createProject.R
