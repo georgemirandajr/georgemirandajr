@@ -42,7 +42,7 @@ Your package can contain many addins and functions, even data and Rmarkdown temp
 ![create-project-min](https://user-images.githubusercontent.com/6701264/172500425-f40de58b-97c8-41ae-8534-38a8cc170a79.png)
 
 ### 2. Write your function(s)
-Here is the function that will create a custom project folder.  This was originally created for previous [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials/Create a Custom Project Template.md). 
+Here is the function that will create a custom project folder.  This was originally created for previous [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md). 
 
 ```
 # save to R/createProject.R
@@ -220,7 +220,7 @@ Binding: new_analysis  // the name of the function you are adding in
 Interactive: true  // see below
 ```
 
-Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials/Create a Custom Project Template.md). 
+Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md). 
 
 ### 7. Finish up your R package
 Document your package and make sure dependencies are included in your DESCRIPTION file.  I recommend using `roxygen2` package, which has tools to assist you with documentation and testing.
