@@ -12,7 +12,10 @@ You'll notice that there's already tons of snippets for each type of file.  Sinc
 I'm going to show you how to create an R snippet for a custom function called createProject, which takes a directory path and a string to create a custom project folder.
 
 Start by using the snippet keyword followed by the name of your snippet. Later, when you're coding and start typing this name in your script, you'll see this snippet suggested to you. 
-Back to creating the snippet - **hit enter** and write the code that you want to appear when you select this snippet.  In this example, taken from a [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md), I want the function to show up with 2 arguments presented to me.  I want the `choose.dir()` to always be there, but I want to have the ability to change the name parameter.  I'll hard-code the `choose.dir()` and use the `${}` syntax to indicate this is a user-input field.  
+
+Next, decide if there are any parts of the snippet you want to be changeable by the user.  Typically, you would want to turn a function's arguments into this type of field.  Use the `${1:name}` syntax wherever you want these fields.  The number reflects the order a user can "tab" through and should be incremented.  The name is a hint you give to the user letting them know what to enter.
+
+In this example, taken from a [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md), I want the function to show up with 2 arguments presented to me.  I want the `choose.dir()` to always be there, but I want to have the ability to change the name parameter.  I'll hard-code the `choose.dir()` and use the `${}` syntax to indicate this is a user-input field.  
   
 Save your changes and exit.  
   
