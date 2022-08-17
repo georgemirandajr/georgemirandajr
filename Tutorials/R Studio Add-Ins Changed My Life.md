@@ -25,7 +25,7 @@ The code above inserts the `%in%` operator.  You can map this addin to a keyboar
 
 To build your own make sure to have `rstudioapi` installed.  This package allows you to create and configure your addin.  
 
-Let's build off a [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials/Create a Custom Project Template.md) where we wrote a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the original function must be called by typing something like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu.  Taking it from a useful function to an even more convenient addin takes just a few steps.
+Let's build off a [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md) where we wrote a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the original function must be called by typing something like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu.  Taking it from a useful function to an even more convenient addin takes just a few steps.
 
 ### 1. Create a package
 Start by creating a new project by clicking on the New Project icon.  Creating a project sounds like a lot, but I promise it's not.  
