@@ -1,4 +1,4 @@
-Snippets are fantastic for repetitive or hard-to-remember chunks of code.  R Studio code snippets give you the ability to quickly repurpose your code as templates.  You're probably using snippets already because R Studio comes packaged with tons of them.
+Snippets are fantastic for repetitive or hard-to-remember chunks of code.  R Studio code snippets give you the ability to quickly repurpose your code as templates.  You're probably using snippets already because R Studio comes packaged with tons of them (e.g., `library`, `apply` family of functions, `if`).
 I use snippets primarily for inserting custom functions, grouping and summarizing data with dplyr, building get requests, and much more.
 
 ## Enable Snippets
@@ -12,7 +12,7 @@ You'll notice that there's already tons of snippets for each type of file.  Sinc
 I'm going to show you how to create an R snippet for a custom function called createProject, which takes a directory path and a string to create a custom project folder.
 
 Start by using the snippet keyword followed by the name of your snippet. Later, when you're coding and start typing this name in your script, you'll see this snippet suggested to you. 
-Back to creating the snippet - **hit enter** and write the code that you want to appear when you select this snippet.  In this example, I want the function to show up with 2 arguments presented to me.  I want the `choose.dir()` to always be there, but I want to have the ability to change the name parameter.
+Back to creating the snippet - **hit enter** and write the code that you want to appear when you select this snippet.  In this example, taken from a [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/blob/main/Tutorials/Create%20a%20Custom%20Project%20Template.md), I want the function to show up with 2 arguments presented to me.  I want the `choose.dir()` to always be there, but I want to have the ability to change the name parameter.  I'll hard-code the `choose.dir()` and use the `${}` syntax to indicate this is a user-input field.  
   
 Save your changes and exit.  
   
