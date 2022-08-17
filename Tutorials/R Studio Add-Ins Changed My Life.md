@@ -1,10 +1,10 @@
 ## R Studio Addins Changed My Life
 
-Want to take your coding efficiency into hyper-drive?  R Add-Ins will do that!  The power of addins really hit me when I started writing them for my own team.  By packaging my code as addins, the team can take advantage of the tools I've built that make the job more efficient.  
+Want to take your coding efficiency into hyper-drive?  R Add-Ins will do that!  I have used some addins in the past, but the power of addins really hit me when I started writing them for my own team.  By packaging my code as addins, the team can take advantage of the tools I've built that make the job more efficient.  
 
 ## What is an R Studio Addin?
 
-This seldomly discussed, yet powerful feature of R Studio allows you take advantage of extensions written for R by simply clicking "Addins" and choosing from a list of installed addins.  **Addins are distributed as R packages**, which means all you have to do is write your code, create a package, publish it, and let others know that they can download it.  
+This seldomly discussed, yet powerful feature of R Studio allows you to take advantage of extensions written for R by simply clicking "Addins" and choosing from a list of installed addins.  **Addins are distributed as R packages**, which means all you have to do is write your code, create a package, publish it, and let others know that they can download it.  
 
 ## Examples
 
@@ -19,7 +19,7 @@ insertInAddin <- function() {
   rstudioapi::insertText(" %in% ")
 }
 ```
-The code above inserts the `%in%` operator.  You can map this addin to a keyboard shortcut to make things even more efficient, which is similar to how the pipe `%>%` operator works when you use `Ctrl+Shift+M`.  But if you can make a shiny gadget, then you can do even more fun things like the `questionr` addin. 
+The code above inserts the `%in%` operator.  You can map this addin to a keyboard shortcut to make things even more efficient, which is similar to how the pipe `%>%` operator works when you use `Ctrl+Shift+M`.  But if you can make a [shiny gadget](https://shiny.rstudio.com/articles/gadgets.html), then you can do even more fun things like the [`questionr`](https://juba.github.io/questionr/) addin. 
 
 ## Build Your Own
 
@@ -62,11 +62,10 @@ Again, this function is great, but to use it we must remember the function name 
 ### 3. Add some templates
 
 Another great feature of addins is that you can add files in your package that can be used by your functions.  This means that you can share datasets and templates!  
-
 In this example, I'll add some template files that I like to include in every project: `global.R` and an R markdown document called `Report_Template.Rmd`.  The `global.R` file calls on my frequently used R packages, establishes variables to connect to my commonly used datasets, and calls on other scripts that will actually perform the analysis. The `Report_Template.Rmd` file is a vetted template for my output.  You can add any files you want to include in your custom project folder, I'm just using these as examples.  To add template files, create a folder in your package path at `inst/extdata` and copy your files there.
 
-### 4. Modify the function to copy the templates
-Since we're using an addin and our addin uses these templates, we can modify our original function by adding some code that copies/pastes the templates into the user's new project folder.
+### 4. Modify the function to copy my custom templates
+Since we want our addin to use these templates, we need to modify our original function by adding some code that copies/pastes the templates into the user's new project folder.
 
 ```
 # save to R/createProject.R
@@ -78,7 +77,7 @@ createProject <- function(path, projectName, ...) {
   f = system.file("extdata", "Report_Template.Rmd", package = "YOUR_PACKAGE_NAME" )  # replace the package argument with the actual name of your package
 
   if ( nchar(f) > 0 ) {
-    file.copy( from = f, to = paste0( path, "/", projectName) )
+    file.copy( from = f, to = paste0( path, "/", projectName) )  # copies the template file stored in extdata into the user's new project folder
   }
 
   # Copy the global.R file
@@ -89,21 +88,9 @@ createProject <- function(path, projectName, ...) {
   }
 ```
 
-### 5. Register the addin
-You need to register your addin by creating a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines to register an addin.  Do this for each addin that you want to include and show to the user.
-
-```
-Name: Create Project  // the name displayed in the drop-down list of addins
-Description: Creates a custom project folder  // displayed as help text to describe the addin for your user
-Binding: createProject  // the name of the function you are adding in
-Interactive: true  // see below
-```
-
-Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the previous [tutorial](www.google.com). 
-
-### 6. Make the Shiny UI
-Now we get to make the function interact with our user.  To do this, we'll modify our function again, this time to make a mini shiny application.
-The basic structure of our ui will take the following shape.
+### 5. Make the Shiny UI
+Now we get to make the function interact with our user.  To do this, we'll create a new file that will contain a function that creates the mini shiny app.
+The basic structure of our UI will take the following shape.  Notice that my new function is called `new_analysis`.
 ```
 new_analysis <- function() {  // this is the 'big' function that will launch the mini shiny app 
   createProject <- function(path, projectName, ...) {
@@ -223,8 +210,20 @@ new_analysis <- function() {
 
 ```
 
+### 6. Register the addin
+You need to register your addin by creating a file in your package folder at `inst/rstudio/addins.dcf`.  It takes just 4 lines (example shown below) to register an addin.  Do this for each addin that you want to include and show to the user.
+
+```
+Name: Create New Analysis  // the name displayed in the drop-down list of addins
+Description: Creates a custom project folder for a new analysis  // displayed as help text to describe the addin for your user
+Binding: new_analysis  // the name of the function you are adding in
+Interactive: true  // see below
+```
+
+Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the previous [tutorial](www.google.com). 
+
 ### 7. Finish up your R package
-Document your package and make sure dependencies are included in your DESCRIPTION file.  I recommend using `roxygen2` for documentation.
+Document your package and make sure dependencies are included in your DESCRIPTION file.  I recommend using `roxygen2` package, which has tools to assist you with documentation and testing.
 
 Once everything is documented and **tested**, you can build the package using Clean and Rebuild.
 ![buildpkg](https://user-images.githubusercontent.com/6701264/184960639-d2d18493-39d9-4b29-9424-18cf34de8046.png)
