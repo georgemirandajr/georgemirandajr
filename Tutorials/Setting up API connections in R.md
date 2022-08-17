@@ -39,6 +39,7 @@ api_data = fromJSON(
 Some text here
 
 ## Example
+Get some city information from [GeoDB Cities](https://rapidapi.com/wirefreethought/api/geodb-cities/).
 ```
 url = "https://wft-geo-db.p.rapidapi.com/v1/geo/cities"
 
