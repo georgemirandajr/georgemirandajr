@@ -1,7 +1,8 @@
-Setting up API connections in R
+# Setting up API connections in R
 
 The main part of this tutorial will focus on creating a function to enable easy GET requests.  We'll take the common structure of a GET request and wrap it in a function, which can be used as an addin or snippet.
 
+## A Basic Structure
 ```
 # Base URL
 url = ''
@@ -31,4 +32,24 @@ api_data = fromJSON(
     res$content
   )
 )
+```
+
+## Writing a Function
+
+Some text here
+
+## Example
+```
+https://rapidapi.com/wirefreethought/api/geodb-cities/
+
+response = VERB( "GET", 
+                  url, 
+                  add_headers(
+                    'X-RapidAPI-Key' = 'SIGN-UP-FOR-KEY', 
+                    'X-RapidAPI-Host' = 'wft-geo-db.p.rapidapi.com'
+                  ), 
+                  content_type( "application/octet-stream" )
+                  )
+                  
+content(response, "text")
 ```
