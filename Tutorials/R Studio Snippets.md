@@ -40,9 +40,9 @@ setDT(readr::read_fwf( ${1:fname},
 
 ## Use Snippets
 
-Create a new script or just start typing the name of your snippet in the console.  R Studio will suggest snippets, functions, and data while you type.  Find your snippet, hit enter, and voila!
+Create a new script or just start typing the name of your snippet in the console.  R Studio will suggest snippets, functions, and data while you type.  Find your snippet, hit enter, and voila!  If for some reason it doesn't show up as you type, you can just type your snippet name, hit `tab` on your keyboard, and the code snippet will appear. 
 
-You can tab through the snippet to enter the parameters (i.e., arguments) that you supplied when you created your snippet.  
+Then tab through the snippet to enter the parameters (i.e., arguments) that you supplied when you created your snippet.  
 
 This is a simple example, but you can make them more complex with more arguments or defaults that you prefer.  I use snippets to call on custom functions or code patterns that I have trouble remembering.
 
