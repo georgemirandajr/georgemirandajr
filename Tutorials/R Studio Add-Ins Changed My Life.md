@@ -25,7 +25,7 @@ The code above inserts the `%in%` operator.  You can map this addin to a keyboar
 
 To build your own make sure to have `rstudioapi` installed.  This package allows you to create and configure your addin.  
 
-Let's build off a previous tutorial [link here](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials) where we wrote a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the original function must be called by typing something like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu.  Taking it from a useful function to an even more convenient addin takes just a few steps.
+Let's build off a [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials/Create a Custom Project Template.md) where we wrote a function that created a custom project folder for us; however, this time we will turn this function into an addin.  The main difference is that the original function must be called by typing something like `createProject(path=choose.dir(), "new project name")`, whereas the addin can be selected from a menu.  Taking it from a useful function to an even more convenient addin takes just a few steps.
 
 ### 1. Create a package
 Start by creating a new project by clicking on the New Project icon.  Creating a project sounds like a lot, but I promise it's not.  
@@ -42,7 +42,7 @@ Your package can contain many addins and functions, even data and Rmarkdown temp
 ![create-project-min](https://user-images.githubusercontent.com/6701264/172500425-f40de58b-97c8-41ae-8534-38a8cc170a79.png)
 
 ### 2. Write your function(s)
-Here is the function that will create a custom project folder.  This was originally created for previous [tutorial](www.google.com). 
+Here is the function that will create a custom project folder.  This was originally created for previous [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials/Create a Custom Project Template.md). 
 
 ```
 # save to R/createProject.R
@@ -220,7 +220,7 @@ Binding: new_analysis  // the name of the function you are adding in
 Interactive: true  // see below
 ```
 
-Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the previous [tutorial](www.google.com). 
+Setting `Interactive` to `true` means that we want R Studio to make use of `shiny` and `miniUI` by opening a dialog box that allows the user to choose a directory and give the custom project folder a name.  If we set `interactive` to `false`, then we would leave our function as-is and let it be called manually like in the [previous tutorial](https://github.com/georgemirandajr/georgemirandajr/edit/main/Tutorials/Create a Custom Project Template.md). 
 
 ### 7. Finish up your R package
 Document your package and make sure dependencies are included in your DESCRIPTION file.  I recommend using `roxygen2` package, which has tools to assist you with documentation and testing.
