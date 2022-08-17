@@ -54,3 +54,9 @@ response = VERB( "GET",
                   
 content(response, "text")
 ```
+
+## Paginated Results
+Sometimes the results you get from an API call will be paginated.  Typically, the API documentation will let you know when to expect this and explains some parameters that you can set to work with pagination.  But how do you programmtically turn each page and compile the results into a nice data.frame?  You can usually find that the API will have a field that displays a link to the next page.  Basically, you just need to create a loop that takes your initial API address, gets the results, finds the field with the next link, and repeats until the value in that field is blank (i.e., no next page).  Here's the framework for doing so.
+
+```
+```
