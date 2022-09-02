@@ -1,13 +1,13 @@
-## Custom Project Folders
-I am going to write a function that will create a directory with all the sub-directories needed for a data analysis project.  
-
 ## Motivation
 All data analysts work on the same thing: data.  However, the way we organize that work varies based on individual preferences, work environments, and experience.  When I start a big project, I need to have a predictable framework that makes it quick and easy to start working while keeping my code streamlined.
+
+## Custom Project Folders
+I am going to write a function that will create a directory with all the sub-directories needed for a data analysis project.  
   
 ## My Custom Project Folder
 My projects need to have the following sub-directories:
 - `/data` to keep any input data for my code. This can be static reference files or manually updated spreadsheets, etc.  Bascially, any data that feeds into my analysis.
-- `/output` to store output files (e.g., .csv, .xlsx, .txt, .docx, .pptx, .pdf).  These are datasets that I can share with my boss or external parties.
+- `/output` to store output files (e.g., .csv, .rds, .xlsx, .txt, .docx, .pptx, .pdf).  These are datasets that I can share with my boss or external parties.
 - `/code` to store the various R files needed for the analysis, including a global.R file to call the other scripts in this folder.
 - `/utils` to store log.txt files, .bat, or helper files.  Not always needed, but they'll go here when needed.
 - `/www` to store images such as logos or css files to style reports that utilize the output data.
