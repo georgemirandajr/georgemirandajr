@@ -43,14 +43,14 @@ Get some city information from [GeoDB Cities](https://rapidapi.com/wirefreethoug
 ```
 url = "https://wft-geo-db.p.rapidapi.com/v1/geo/cities"
 
-response = VERB( "GET", 
-                  url, 
-                  add_headers(
-                    'X-RapidAPI-Key' = 'SIGN-UP-FOR-KEY', 
-                    'X-RapidAPI-Host' = 'wft-geo-db.p.rapidapi.com'
-                  ), 
-                  content_type( "application/octet-stream" )
-                  )
+response = httr::VERB( "GET", 
+                        url, 
+                        add_headers(
+                          'X-RapidAPI-Key' = 'SIGN-UP-FOR-KEY', 
+                          'X-RapidAPI-Host' = 'wft-geo-db.p.rapidapi.com'
+                        ), 
+                        content_type( "application/octet-stream" )
+                        )
                   
 content(response, "text")
 ```
