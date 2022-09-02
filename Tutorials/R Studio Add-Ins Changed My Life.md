@@ -1,6 +1,6 @@
 ## R Studio Addins Changed My Life
 
-Want to take your coding efficiency into hyper-drive?  R Add-Ins will do that!  I have used some addins in the past, but the power of addins really hit me when I started writing them for my own team.  By packaging my code as addins, the team can take advantage of the tools I've built that make the job more efficient.  
+Want to take your coding efficiency into hyper-drive?  R Add-Ins will do that!  I have used some addins in the past, but the power of addins really hit me when I started writing them for my own team.  By packaging my code as addins, the team can take advantage of the tools I've built that make the job more efficient.  It's also useful for those who are starting to learn R because as an addin author, you can abstract the code as much as you need.  
 
 ## What is an R Studio Addin?
 
@@ -240,4 +240,4 @@ Publishin on CRAN takes a little longer, but it has its advantages.
 For a step-by-step on how to publish to CRAN, visit https://r-pkgs.org/release.html
 
 ## Conclusion
-Publishing an addin is easy and can make your code development more efficient.  In turn, addins can make your life easier, as well as that of anyone who needs to use your code.   
+Publishing an addin is simple and can make your code development more efficient.  In turn, addins can make your life easier, as well as that of anyone who needs to use your code.  As an education tool, addins are capable of supporting R learners by exposing them to code and making it easier to see results. 
