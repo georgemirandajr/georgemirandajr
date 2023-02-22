@@ -19,6 +19,7 @@ Wanting to solidify and share my unique experience working with software develop
 16. Furrr 
 17. Emails with Power Automate
 18. NQL with R (Ask Ada)
+19. Web Scraping HR Benchmarks
 
 **Description of the Video Series**
 Make your life a little easier with R.  Hacks are temporary, these videos offer solutions that'll stick like glue.
