@@ -12,7 +12,7 @@ Wanting to solidify and share my unique experience working with software develop
 9. Using Airtable in R (airtabler)
 10. Sending gorgeous emails with R
 11. A better shiny template w/ modules and css templates
-12. Sending gorgeous emails with R
+12. Sending business emails with R
 13. Sending text messages with R
 14. Tictoc()
 15. Purrr
