@@ -2,7 +2,7 @@
 
 This is my brain in the cloud.  
 
-I am using markdown to document everything because it's simple and promises to never die.#code
+I am using markdown to document everything because it's simple and promises to never die. #code
 <!--
 **georgemirandajr/georgemirandajr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
